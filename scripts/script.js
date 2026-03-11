@@ -86,7 +86,7 @@ const showWordLevel = (words) => {
 
         <div class="button-stuffs flex justify-between mt-8">
           <button onclick="loadWordDetail(${word.id})" class="btn bg-[#badeff42] hover:bg-[#badeff80]"><i class="fa-solid fa-circle-info"></i></button>
-          <button class="btn bg-[#badeff42] hover:bg-[#badeff80]"><i class="fa-duotone fa-solid fa-volume-high"></i></button>
+          <button onclick="pronounceWord('${word.word}')" class="btn bg-[#badeff42] hover:bg-[#badeff80]"><i class="fa-duotone fa-solid fa-volume-high"></i></button>
         </div>
 
       </div>
@@ -136,3 +136,9 @@ document.getElementById("btn-search").addEventListener("click", ()=>{
       showWordLevel(filterWord);
     } );
 })
+
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
