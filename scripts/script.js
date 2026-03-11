@@ -27,6 +27,37 @@ const loadWordLevel = (id) => {
     });
 }
 
+const loadWordDetail = async(id) => {
+  const url = `https://openapi.programming-hero.com/api/word/${id}`;
+  const res = await fetch(url);
+  const details = await res.json();
+  showWordDetail(details.data);
+}
+
+const showWordDetail = (detail) => {
+  const detailContainer = document.getElementById("details-container");
+  detailContainer.innerHTML = `
+        <div>
+          <h2 class="font-bold text-2xl">${detail.word} (<i class="fa-duotone fa-solid fa-microphone-lines"></i> :${detail.pronunciation})</h2>
+        </div>
+        <div>
+          <p class="font-semibold mb-2">Meaning</p>
+          <p>${detail.meaning}</p>
+        </div>
+        <div>
+          <p class="font-semibold mb-2">Example</p>
+          <p>${detail.sentence}</p>
+        </div>
+        <div>
+          <p class="font-medium font-bangla mb-2">সমার্থক শব্দ গুলো</p>
+          <div class="flex gap-2">
+            ${createBtn(detail.synonyms)}
+          </div>
+        </div>
+  `;
+  document.getElementById("word_modal").showModal();
+}
+
 const showWordLevel = (words) => {
   const wordContainer = document.getElementById("word-container");
   wordContainer.innerHTML = "";
@@ -54,7 +85,7 @@ const showWordLevel = (words) => {
         </div>
 
         <div class="button-stuffs flex justify-between mt-8">
-          <button onclick="my_modal_5.showModal()" class="btn bg-[#badeff42] hover:bg-[#badeff80]"><i class="fa-solid fa-circle-info"></i></button>
+          <button onclick="loadWordDetail(${word.id})" class="btn bg-[#badeff42] hover:bg-[#badeff80]"><i class="fa-solid fa-circle-info"></i></button>
           <button class="btn bg-[#badeff42] hover:bg-[#badeff80]"><i class="fa-duotone fa-solid fa-volume-high"></i></button>
         </div>
 
@@ -81,6 +112,11 @@ const displayLevel = (lessons) => {
 
   });
 
+}
+
+const createBtn = (arr) => {
+  const htmlElement = arr.map((el) => `<button class="btn bg-[#edf7ff]">${el}</button>`);
+  return htmlElement.join(" ");
 }
 
 loadLevel();
