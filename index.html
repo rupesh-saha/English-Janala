@@ -27,7 +27,7 @@
 <body>
 
   <header>
-    <div class="navbar bg-base-100 shadow-sm bg-[#badeff42]">
+    <div class="navbar bg-base-100 shadow-sm bg-[#badeff42] md:px-8">
       <div class="navbar-start">
         <div class="dropdown">
           <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -41,10 +41,10 @@
             <li><a ><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
           </ul>
         </div>
-        <a class="btn btn-ghost text-xl">
-          <span>English</span>
+        <a class="flex items-center gap-1 text-xl">
+          <span class="font-bold text-lg">English</span>
           <img src="assets/logo.png" alt="">
-          <span class="font-bangla">জানালা</span>
+          <span class="font-bangla font-semibold text-lg">জানালা</span>
         </a>
       </div>
 
@@ -57,6 +57,34 @@
       </div>
     </div>
   </header>
+
+  <section class="py-5 w-11/12 mx-auto flex flex-col-reverse md:flex-row justify-between items-center gap-10 mb-12 md:mb-20">
+    <div class="content flex-1 text-center md:text-left">
+      <h2 class="text-4xl font-bold mb-4"><span class="text-[#00BCFF]">English</span> is Easy!!</h2>
+      <p class="font-bangla md:max-w-[650px]">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+
+      <div class="form space-y-5 mt-9">
+        <input type="text" class="input" placeholder="Enter your Name" /><br>
+
+        <input type="password" class="input" placeholder="Password" /><br>
+
+        <button class="btn btn-neutral bg-[#422AD5]">Get Started</button>
+      </div>
+
+
+    </div>
+    <div class="image flex-1">
+      <img src="assets/hero-student.png" alt="">
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-4xl font-bold mb-4 text-center"><span class="text-[#00BCFF]">Let's</span> Learn Vocabularies</h2>
+
+    <div id="level-container">
+
+    </div>
+  </section>
   
 
 
